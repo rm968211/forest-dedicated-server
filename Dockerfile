@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 
-LABEL maintainer="Sebastian Schmidt"
+LABEL maintainer="Not Sebastian Schmidt"
 
 ENV WINEPREFIX=/wine \
     WINEARCH=win64 \
@@ -13,7 +13,7 @@ ENV WINEPREFIX=/wine \
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get dist-upgrade -y \
-    && apt-get install -y --no-install-recommends --no-install-suggests procps wget curl ca-certificates supervisor lib32gcc1 apt-transport-https xvfb winbind wine wine64 wine32 \
+    && apt-get install -y --no-install-recommends --no-install-suggests procps wget curl ca-certificates supervisor lib32gcc-s1 apt-transport-https xvfb winbind wine wine64 wine32 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY . ./
